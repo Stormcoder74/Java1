@@ -1,0 +1,84 @@
+package ru.geekbrains.java1.Lesson_03;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Homework {
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        guessNum();
+        guessWord();
+    }
+
+    public static void guessNum() {
+        boolean right = false;
+        String repeat;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("\nВам необходимо угадать число от 0 до 9 с трех попыток");
+            int secretNumber = (int) (Math.random() * 10);
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Попытка " + (i + 1));
+                int guess;
+                while (true) {
+                    System.out.println("Введите число:");
+                    if (scanner.hasNextInt()) {
+                        guess = scanner.nextInt();
+                        break;
+                    } else scanner.nextLine();
+                }
+                if (guess > secretNumber) System.out.println("Загаданное число меньше");
+                else if (guess < secretNumber) System.out.println("Загаданное число больше");
+                else {
+                    System.out.println("Правильно. Примите поздравления!");
+                    right = true;
+                    break;
+                }
+            }
+            if (!right) System.out.println("Очень жаль, но все попытки исчерпаны. Вы проиграли.");
+            System.out.println("Хотите сыграть еще раз? 1 - Да, 0 -Нет");
+            repeat = scanner.next();
+        } while (repeat.equals("1"));
+    }
+
+    public static void guessWord() {
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot",
+                "avocado", "broccoli", "carrot", "cherry", "garlic", "grape",
+                "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive",
+                "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+        System.out.println("Вам необходимо подобрать пароль. Возможные варианты  приведены ниже:");
+        System.out.println(Arrays.toString(words));
+        int secretWord = (int) (Math.random() * words.length);
+        int count = 0;
+        String guess;
+        do {
+            String addition = "###############";
+            System.out.println("Введите слово");
+            guess = scanner.nextLine();
+            System.out.print("Совпвдающие буквы: ");
+            for (int i = 0; i < guess.length() && i < words[secretWord].length(); i++) {
+                if (words[secretWord].charAt(i) == guess.charAt(i))
+                    System.out.print(guess.charAt(i));
+                else System.out.print("#");
+                addition = addition.substring(1);
+            }
+            System.out.println(addition);
+            count++;
+        } while (!guess.equals(words[secretWord]));
+        String tries;
+        switch (count) {
+            case 1:
+                tries = " попытку. С первого раза! Потрясающе!!!";
+                break;
+            case 2:
+            case 3:
+            case 4:
+                tries = " попытки. Отличный результат!";
+                break;
+            default:
+                tries = " попыток.";
+        }
+        System.out.println("Поздравляю! Вы угадали использовав " + count + tries);
+    }
+}

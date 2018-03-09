@@ -1,0 +1,111 @@
+package ru.geekbrains.java1.lesson_02;
+
+import java.util.Arrays;
+
+public class Homework {
+    public static void main(String[] args) {
+        inversion();
+        System.out.println();
+        multiple3();
+        System.out.println();
+        doubleLessThan6();
+        System.out.println();
+        x1();
+        System.out.println();
+        minMax();
+        System.out.println();
+        System.out.println(checkBalance(new int[]{1, 4, 2, 3, 5, 2, 3}));
+        System.out.println(checkBalance(new int[]{1, 4, 2, 3, 5, 2, 2}));
+        System.out.println();
+        shiftItems(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, -34);
+        shiftItems(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 3);
+    }
+
+    private static void inversion() {
+        int[] arr = {1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0};
+        for (int i = 0; i < arr.length; i++) arr[i] = -(--arr[i]);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    private static void multiple3() {
+        int[] arr = new int[8];
+        for (int i = 0; i < arr.length; i++) arr[i] = i * 3;
+        System.out.println(Arrays.toString(arr));
+    }
+
+    private static void doubleLessThan6() {
+        int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < arr.length; i++)
+            if (arr[i] < 6) arr[i] *= 2;
+        System.out.println(Arrays.toString(arr));
+    }
+
+    /*private static void x1() {
+        int[][] arr = new int[10][10];
+        for (int i = 0; i < arr.length; i++)
+            for (int j = 0; j < arr[0].length; j++)
+                if (i == j || (arr.length - 1 - i) == j)
+                    arr[i][j] = 1;
+
+        for (int[] i : arr) System.out.println(Arrays.toString(i));
+    }*/
+
+    private static void x1() {
+        int[][] arr = new int[10][10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i][i] = 1;
+            arr[i][arr.length - 1 - i] = 1;
+        }
+
+        for (int[] i : arr) System.out.println(Arrays.toString(i));
+    }
+
+    private static void minMax() {
+        int[] arr = new int[10];
+        for (int i = 0; i < arr.length; i++)
+            arr[i] = (int) (Math.random() * 200 - 100);
+
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for (int i : arr) {
+            if (i < min) min = i;
+            if (i > max) max = i;
+        }
+        System.out.println(Arrays.toString(arr));
+        System.out.println("Минимальное значение: "
+                + min + ", максимальное: " + max + ".");
+    }
+
+    private static boolean checkBalance(int[] arr) {
+        boolean result = false;
+
+        int rightSum = 0;
+        for (int i : arr) rightSum += i;
+
+        int leftSum = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            System.out.print(arr[i] + " ");
+            leftSum += arr[i];
+            rightSum -= arr[i];
+            if (leftSum == rightSum) {
+                result = true;
+                System.out.print("|| ");
+            }
+        }
+        System.out.println(arr[arr.length - 1]);
+        return result;
+    }
+
+    private static void shiftItems(int[] arr, int n) {
+        while (n < 0) n += arr.length;
+
+        for (int i = 0; i < n; i++) {
+            int tmp = arr[arr.length - 1];
+            for (int j = arr.length - 1; j > 0; j--)
+                arr[j] = arr[j - 1];
+            arr[0] = tmp;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+}
