@@ -1,9 +1,14 @@
 package ru.geekbrains.java1.lesson_05;
 
-import java.util.ArrayList;
+// Сверх ДЗ возможность добавлять новых сотрудников
 // Вместо массива, не имеющего возможности расширения, используется ArrayList
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Homework {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         ArrayList<Worker> workerList = new ArrayList<>();
 
         workerList.add(new Worker("Ivanov Petr", "Director",
@@ -21,8 +26,14 @@ public class Homework {
         workerList.add(new Worker("Natalie Portman", "Accounter",
                 " sidorov@mailbox.com ", "+792357812", 70000, 32));
 
-        print(workerList, 20);
-
+        String input = "";
+        do {
+            print(workerList, 20);
+            System.out.println("Введите 1 чтобы добавить нового сотрудника или нажмите Enter для выхода");
+            input = scanner.nextLine();
+            if (input.equals("1"))
+                workerList.add(Worker.createWorker());
+        } while (input.equals("1"));
     }
 
     private static void print(ArrayList<Worker> list, int ageFilter) {
