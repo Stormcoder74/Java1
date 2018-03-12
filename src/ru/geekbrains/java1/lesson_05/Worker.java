@@ -1,5 +1,7 @@
 package ru.geekbrains.java1.lesson_05;
 
+import java.util.Scanner;
+
 public class Worker {
 
     private String fio;
@@ -99,7 +101,7 @@ public class Worker {
     }
 
     public boolean setAge(int age) {
-        if(age<14){
+        if (age < 14) {
             System.out.println("Использование труда малолетних детей запрещено!");
             return false;
         }
@@ -138,5 +140,50 @@ public class Worker {
 
     public int getAge() {
         return age;
+    }
+
+    public static Worker createWorker() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("В процессе ввода данных могутвыводиться нижеследующие сообщения.");
+        System.out.println("В таком случае введите данные повторно");
+        System.out.println();
+        Worker worker = new Worker();
+        System.out.println();
+        String input;
+        do {
+            System.out.println("Введите ФИО сотрудника");
+            input = scanner.nextLine();
+        } while (!worker.setFio(input));
+
+        do {
+            System.out.println("Введите должность сотрудника");
+            input = scanner.nextLine();
+        } while (!worker.setPosition(input));
+
+        do {
+            System.out.println("Введите email сотрудника");
+            input = scanner.nextLine();
+        } while (!worker.setEmail(input));
+
+        do {
+            System.out.println("Введите телефон сотрудника");
+            input = scanner.nextLine();
+        } while (!worker.setPhone(input));
+
+        float inputF = 0f;
+        do {
+            System.out.println("Введите зарплату сотрудника");
+            if (scanner.hasNextFloat())
+                inputF = scanner.nextFloat();
+        } while (!worker.setSalary(inputF));
+
+        int inputI = 0;
+        do {
+            System.out.println("Введите возраст сотрудника");
+            if (scanner.hasNextInt())
+                inputI = scanner.nextInt();
+        } while (!worker.setAge(inputI));
+
+        return worker;
     }
 }
