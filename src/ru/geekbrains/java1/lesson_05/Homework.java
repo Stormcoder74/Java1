@@ -2,6 +2,7 @@ package ru.geekbrains.java1.lesson_05;
 
 // Сверх ДЗ возможность добавлять новых сотрудников
 // Вместо массива, не имеющего возможности расширения, используется ArrayList
+// https://github.com/Stormcoder74/Java1.git
 
 import java.util.ArrayList;
 import java.util.Scanner;
