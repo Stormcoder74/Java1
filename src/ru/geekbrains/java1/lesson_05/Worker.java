@@ -109,13 +109,18 @@ public class Worker {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return fio + ", " +
+                position + ", " +
+                email + ", " +
+                salary + ", " +
+                phone + ", " +
+                age + ".";
+    }
+
     public void info() {
-        System.out.print(fio + ", ");
-        System.out.print(position + ", ");
-        System.out.print(email + ", ");
-        System.out.print(salary + ", ");
-        System.out.print(phone + ", ");
-        System.out.println(age + ".");
+        System.out.println(toString());
     }
 
     public String getFio() {
