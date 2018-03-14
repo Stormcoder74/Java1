@@ -29,7 +29,7 @@ public class Homework {
 
         String input = "";
         do {
-            print(workerList, 20);
+            print(workerList, 40);
             System.out.println("Введите 1 чтобы добавить нового сотрудника или нажмите Enter для выхода");
             input = scanner.nextLine();
             if (input.equals("1"))
