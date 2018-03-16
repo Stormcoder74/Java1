@@ -1,6 +1,8 @@
+// https://github.com/Stormcoder74/Java1.git
+
 package ru.geekbrains.java1.lesson_06;
 
-public class Main {
+public class Homework {
     public static void main(String[] args) {
         Animal animals[] = {new Cat("Барсик"), new Cat("Мурзик"), new Cat("Васька"),
                 new Dog("Полкан"), new Dog("Вулкан"), new Dog("Барбос")};
