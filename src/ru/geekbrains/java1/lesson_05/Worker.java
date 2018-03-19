@@ -120,7 +120,7 @@ public class Worker {
     }
 
     public void info() {
-        System.out.println(toString());
+        System.out.println(this);
     }
 
     public String getFio() {
