@@ -2,16 +2,14 @@ package ru.geekbrains.java1.lesson_07;
 
 
 public class Plate {
-//    private int maxFood;
     private int food;
 
     public Plate(int food){
         this.food = food;
-//        maxFood = food;
     }
 
     public boolean decreaseFood(int amount){
-        if ((food - amount) > 0) {
+        if (food >= amount) {
             food -= amount;
             return true;
         }
