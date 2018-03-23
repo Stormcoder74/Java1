@@ -9,10 +9,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class PaintPanel2 extends JPanel {
+public class PicturePanel extends JPanel {
     private BufferedImage image;
 
-    public PaintPanel2() {
+    public PicturePanel() {
         try {
             image = ImageIO.read(new File("image.jpg"));
         } catch (IOException e) {
@@ -23,7 +23,7 @@ public class PaintPanel2 extends JPanel {
             public void mouseDragged(MouseEvent e) {
                 Graphics g = image.getGraphics();
                 g.setColor(Color.ORANGE);
-                g.fillOval(e.getX(), e.getY(), 3, 10);
+                g.fillOval(e.getX(), e.getY(), 5, 5);
                 repaint();
             }
 
